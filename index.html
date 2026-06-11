@@ -22,15 +22,17 @@ a{text-decoration:none;color:inherit} button,input,select,textarea{font:inherit}
       <div class="card login-card">
         <h2>アクア本部ログイン</h2>
         <p style="color:var(--muted);margin-top:0">本部担当者専用画面</p>
-        <div class="field"><label>メールアドレス</label><input value="honbu@aqua.example.jp"></div>
-        <div class="field"><label>パスワード</label><input type="password" value="password"></div>
-        <button class="btn" style="width:100%" onclick="show('dashboard')">ログイン</button>
+        <div class="field"><label>ログインID</label><input id="authUser" value="kuha" autocomplete="username"></div>
+        <div class="field"><label>パスワード</label><input id="authPass" type="password" value="9898" autocomplete="current-password" onkeydown="if(event.key==='Enter') loginAuth()"></div>
+        <p id="authError" style="display:none;color:var(--red);font-weight:700;margin:0 0 12px">IDまたはパスワードが違います。</p>
+        <button class="btn" style="width:100%" onclick="loginAuth()">ログイン</button>
+        <p style="color:var(--muted);font-size:12px;line-height:1.7;margin-top:14px">閲覧制限用の簡易認証です。ID：kuha / PW：9898</p>
       </div>
     </div>
   </div>
 </section>
 
-<div id="mainTop" class="topbar" style="display:none"><div class="brand">アクア チャットシステム</div><div style="display:flex;gap:10px;align-items:center"><span class="role">アクア本部</span><button class="btn ghost" onclick="show('login')">ログアウト</button></div></div>
+<div id="mainTop" class="topbar" style="display:none"><div class="brand">アクア チャットシステム</div><div style="display:flex;gap:10px;align-items:center"><span class="role">アクア本部</span><button class="btn ghost" onclick="logoutAuth()">ログアウト</button></div></div>
 
 <section id="dashboard" class="screen">
   <div class="container">
@@ -101,7 +103,46 @@ a{text-decoration:none;color:inherit} button,input,select,textarea{font:inherit}
 </section>
 </div>
 <script>
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('mainTop').style.display=id==='login'?'none':'flex';window.scrollTo(0,0)}
+const AUTH_USER = 'kuha';
+const AUTH_PASS = '9898';
+
+function isAuthed(){
+  return sessionStorage.getItem('aquaMockAuthed') === '1';
+}
+
+function loginAuth(){
+  const user = document.getElementById('authUser').value.trim();
+  const pass = document.getElementById('authPass').value;
+  const error = document.getElementById('authError');
+
+  if(user === AUTH_USER && pass === AUTH_PASS){
+    sessionStorage.setItem('aquaMockAuthed','1');
+    error.style.display = 'none';
+    show('dashboard');
+  }else{
+    sessionStorage.removeItem('aquaMockAuthed');
+    error.style.display = 'block';
+  }
+}
+
+function logoutAuth(){
+  sessionStorage.removeItem('aquaMockAuthed');
+  show('login');
+}
+
+function show(id){
+  if(id !== 'login' && !isAuthed()){
+    id = 'login';
+  }
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('mainTop').style.display = id === 'login' ? 'none' : 'flex';
+  window.scrollTo(0,0);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  if(isAuthed()) show('dashboard');
+});
 </script>
 </body>
 </html>
