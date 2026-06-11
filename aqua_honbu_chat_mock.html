@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>アクア様 本部用チャットシステム モック</title>
+<style>
+:root{--blue:#0b63ce;--blue2:#0647a8;--navy:#06244a;--bg:#f4f7fb;--line:#d9e3f0;--green:#18a058;--orange:#f28c28;--red:#e5484d;--text:#142033;--muted:#667085;--card:#fff;--shadow:0 10px 25px rgba(15,35,80,.08);--radius:18px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit} button,input,select,textarea{font:inherit}.app{min-height:100vh}.topbar{height:68px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}.brand{font-size:20px;font-weight:800;letter-spacing:.03em}.role{font-size:13px;background:rgba(255,255,255,.15);padding:7px 12px;border-radius:999px}.container{max-width:1180px;margin:28px auto;padding:0 20px}.screen{display:none}.screen.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--blue);color:#fff}.btn.secondary{background:#eef4ff;color:var(--blue)}.btn.ghost{background:#fff;color:var(--blue);border:1px solid #b7d2f7}.btn.green{background:var(--green)}.btn.orange{background:var(--orange)}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.badge.red{background:#fff1f1;color:var(--red)}.badge.green{background:#e9f8ef;color:var(--green)}.badge.blue{background:#eef5ff;color:var(--blue)}.badge.orange{background:#fff4e8;color:#c46500}.login-wrap{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}.login-hero{background:linear-gradient(135deg,#063b83,#0b63ce);color:#fff;padding:70px;display:flex;flex-direction:column;justify-content:center}.login-hero h1{font-size:42px;line-height:1.25;margin:0 0 20px}.login-hero p{font-size:17px;line-height:1.9;opacity:.9}.login-panel{display:flex;align-items:center;justify-content:center;padding:40px}.login-card{width:430px;padding:34px}.login-card h2{margin:0 0 8px;font-size:26px}.field{margin:18px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:#344054}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:13px 14px;background:#fff}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.summary{padding:20px}.summary .num{font-size:32px;font-weight:900;margin:8px 0}.summary .label{color:var(--muted);font-size:13px}.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.dash-head h1{margin:0;font-size:28px}.layout{display:grid;grid-template-columns:1fr 340px;gap:20px}.room-list{overflow:hidden}.room-item{display:grid;grid-template-columns:52px 1fr 110px;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:center;cursor:pointer;background:#fff}.room-item:hover{background:#f8fbff}.avatar{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:900;background:linear-gradient(135deg,#0b63ce,#6ea8ff)}.room-title{font-weight:800;margin-bottom:5px}.room-msg{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.room-meta{text-align:right;font-size:12px;color:var(--muted)}.panel{padding:20px}.panel h3{margin:0 0 14px}.todo{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:11px 0;font-size:14px}.chat-layout{display:grid;grid-template-columns:310px 1fr;gap:18px;height:calc(100vh - 124px)}.side{overflow:hidden}.side .room-item{grid-template-columns:44px 1fr}.chat-main{display:flex;flex-direction:column;overflow:hidden}.chat-header{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chat-title{font-size:19px;font-weight:900}.messages{flex:1;padding:22px;overflow:auto;background:linear-gradient(#f8fbff,#fff)}.msg{display:flex;gap:10px;margin-bottom:16px}.msg.me{justify-content:flex-end}.bubble{max-width:70%;padding:12px 14px;border-radius:16px;background:#eef4ff;line-height:1.65;font-size:14px}.me .bubble{background:#dff3e8}.name{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px}.attach{margin-top:8px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--blue);font-weight:700}.composer{border-top:1px solid var(--line);padding:14px;display:flex;gap:10px;background:#fff}.composer input{flex:1;border:1px solid #cbd5e1;border-radius:12px;padding:12px}.create-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}.check-list{display:grid;gap:10px}.check{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.phrase{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff}.tabs{display:flex;gap:8px;margin:18px 0}.tab{padding:9px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--muted)}.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}@media(max-width:900px){.login-wrap,.layout,.chat-layout,.create-grid{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.chat-layout{height:auto}.login-hero{padding:36px}.room-item{grid-template-columns:46px 1fr}.room-meta{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="login" class="screen active">
+  <div class="login-wrap">
+    <div class="login-hero">
+      <h1>アクア<br>チャットコミュニケーションシステム</h1>
+      <p>管理会社・アクア本部・FCオーナー間の連絡を、物件・案件単位で一元管理。伝言ゲーム、対応漏れ、クレーム対応の遅れを防ぎます。</p>
+    </div>
+    <div class="login-panel">
+      <div class="card login-card">
+        <h2>アクア本部ログイン</h2>
+        <p style="color:var(--muted);margin-top:0">本部担当者専用画面</p>
+        <div class="field"><label>メールアドレス</label><input value="honbu@aqua.example.jp"></div>
+        <div class="field"><label>パスワード</label><input type="password" value="password"></div>
+        <button class="btn" style="width:100%" onclick="show('dashboard')">ログイン</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="mainTop" class="topbar" style="display:none"><div class="brand">アクア チャットシステム</div><div style="display:flex;gap:10px;align-items:center"><span class="role">アクア本部</span><button class="btn ghost" onclick="show('login')">ログアウト</button></div></div>
+
+<section id="dashboard" class="screen">
+  <div class="container">
+    <div class="dash-head"><div><h1>ダッシュボード</h1><p style="color:var(--muted);margin:6px 0 0">未完了ルームと最新チャットを確認できます。</p></div><button class="btn" onclick="show('create')">＋ 新規チャット作成</button></div>
+    <div class="grid4">
+      <div class="card summary"><div class="label">未完了ルーム</div><div class="num">18</div><span class="badge red">要対応 6件</span></div>
+      <div class="card summary"><div class="label">本日更新</div><div class="num">24</div><span class="badge blue">昨日比 +8</span></div>
+      <div class="card summary"><div class="label">未読メッセージ</div><div class="num">37</div><span class="badge orange">確認待ち</span></div>
+      <div class="card summary"><div class="label">完了済み</div><div class="num">142</div><span class="badge green">今月累計</span></div>
+    </div>
+    <div class="tabs"><span class="tab active">すべて</span><span class="tab">未完了</span><span class="tab">未読</span><span class="tab">クレーム</span><span class="tab">設備不具合</span></div>
+    <div class="layout">
+      <div class="card room-list">
+        <script>const rooms=['物件A_空調不具合について','物件B_エレベーター点検日程','物件C_共用部清掃について','物件D_照明交換対応','物件E_入居者クレーム共有','物件F_水漏れ一次対応','物件G_駐車場トラブル','物件H_ゴミ置き場改善依頼','物件I_鍵交換依頼','物件J_退去立会い調整'];</script>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">A</div><div><div class="room-title">物件A_空調不具合について <span class="badge red">未完了</span></div><div class="room-msg">管理会社 山田：入居者様より「エアコンが効かない」と連絡がありました。</div></div><div class="room-meta">10:30<br><span class="badge red">3</span></div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">B</div><div><div class="room-title">物件B_エレベーター点検日程</div><div class="room-msg">FCオーナー 佐藤：来週火曜で調整可能です。</div></div><div class="room-meta">09:15</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">C</div><div><div class="room-title">物件C_共用部清掃について <span class="badge orange">確認中</span></div><div class="room-msg">アクア本部 鈴木：写真を確認しました。清掃会社へ連絡します。</div></div><div class="room-meta">昨日<br><span class="badge red">1</span></div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">D</div><div><div class="room-title">物件D_照明交換対応</div><div class="room-msg">管理会社 田中：交換完了しました。写真を添付します。</div></div><div class="room-meta">昨日</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">E</div><div><div class="room-title">物件E_入居者クレーム共有 <span class="badge red">未完了</span></div><div class="room-msg">管理会社 木村：騒音に関するご相談がありました。</div></div><div class="room-meta">2日前</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">F</div><div><div class="room-title">物件F_水漏れ一次対応</div><div class="room-msg">FCオーナー 佐藤：業者手配済みです。</div></div><div class="room-meta">2日前</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">G</div><div><div class="room-title">物件G_駐車場トラブル</div><div class="room-msg">アクア本部：管理会社へ状況確認中です。</div></div><div class="room-meta">3日前</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">H</div><div><div class="room-title">物件H_ゴミ置き場改善依頼</div><div class="room-msg">管理会社：掲示物の案を確認お願いします。</div></div><div class="room-meta">3日前</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">I</div><div><div class="room-title">物件I_鍵交換依頼</div><div class="room-msg">FCオーナー：費用承認しました。</div></div><div class="room-meta">4日前</div></div>
+        <div class="room-item" onclick="show('chat')"><div class="avatar">J</div><div><div class="room-title">物件J_退去立会い調整</div><div class="room-msg">管理会社：候補日を3つ送付します。</div></div><div class="room-meta">5日前</div></div>
+      </div>
+      <div class="card panel"><h3>本部対応メモ</h3><div class="todo"><span>期限超過</span><b style="color:var(--red)">2件</b></div><div class="todo"><span>管理会社から返信待ち</span><b>5件</b></div><div class="todo"><span>FCオーナー確認待ち</span><b>7件</b></div><div class="todo"><span>添付ファイルあり</span><b>12件</b></div><br><button class="btn secondary" style="width:100%">CSV出力</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="chat" class="screen">
+  <div class="container" style="max-width:1280px">
+    <div class="chat-layout">
+      <div class="card side">
+        <div style="padding:16px"><button class="btn secondary" onclick="show('dashboard')">← ダッシュボードへ</button></div>
+        <div class="room-item"><div class="avatar">A</div><div><div class="room-title">物件A_空調不具合</div><div class="room-msg">未完了・未読3件</div></div></div>
+        <div class="room-item"><div class="avatar">B</div><div><div class="room-title">物件B_点検日程</div><div class="room-msg">確認中</div></div></div>
+      </div>
+      <div class="card chat-main">
+        <div class="chat-header"><div><div class="chat-title">物件A_空調不具合について</div><div style="color:var(--muted);font-size:13px">参加者：管理会社 山田／アクア本部 鈴木／FCオーナー 佐藤</div></div><span class="badge red">未完了</span></div>
+        <div class="messages">
+          <div class="msg"><div class="avatar">管</div><div><div class="name">管理会社 山田 10:20</div><div class="bubble">入居者様より「エアコンが効かない」と連絡がありました。室外機の写真を添付します。<div class="attach">📎 室外機写真.jpg</div></div></div></div>
+          <div class="msg me"><div><div class="name">アクア本部 鈴木 10:21</div><div class="bubble">確認します。室外機周辺の写真も追加でお願いします。</div></div></div>
+          <div class="msg"><div class="avatar">FC</div><div><div class="name">FCオーナー 佐藤 10:23</div><div class="bubble">メーカー修理になる場合は、見積確認後に進めてください。</div></div></div>
+          <div class="msg me"><div><div class="name">アクア本部 鈴木 10:25</div><div class="bubble">メーカーに連絡しました。訪問可能日を確認します。</div></div></div>
+        </div>
+        <div class="composer"><button class="btn secondary">定型文</button><button class="btn secondary">添付</button><input placeholder="メッセージを入力"><button class="btn">送信</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="create" class="screen">
+  <div class="container">
+    <div class="dash-head"><div><h1>新規チャット作成</h1><p style="color:var(--muted);margin:6px 0 0">案件・物件単位でチャットルームを作成します。</p></div><button class="btn secondary" onclick="show('dashboard')">戻る</button></div>
+    <div class="create-grid">
+      <div class="card panel">
+        <div class="field"><label>件名</label><input placeholder="例：物件A_空調不具合について"></div>
+        <div class="field"><label>物件・案件</label><select><option>物件A</option><option>物件B</option><option>物件C</option></select></div>
+        <div class="field"><label>カテゴリ</label><select><option>設備不具合</option><option>クレーム</option><option>点検・清掃</option><option>その他</option></select></div>
+        <div class="field"><label>初回メッセージ</label><textarea rows="7" placeholder="共有内容を入力してください"></textarea></div>
+        <div class="field"><label>添付ファイル</label><input type="file"></div>
+        <button class="btn" onclick="show('chat')">チャットルームを作成</button>
+      </div>
+      <div class="card panel"><h3>参加者を選択</h3><div class="check-list"><label class="check"><input type="checkbox" checked> 管理会社 山田</label><label class="check"><input type="checkbox" checked> アクア本部 鈴木</label><label class="check"><input type="checkbox" checked> FCオーナー 佐藤</label></div><br><h3>いつも使うフレーズ</h3><div class="phrase"><span>確認します。少々お待ちください。</span><button class="btn secondary">挿入</button></div><div class="phrase"><span>写真の添付をお願いします。</span><button class="btn secondary">挿入</button></div><div class="phrase"><span>メーカーに確認します。</span><button class="btn secondary">挿入</button></div></div>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('mainTop').style.display=id==='login'?'none':'flex';window.scrollTo(0,0)}
+</script>
+</body>
+</html>
