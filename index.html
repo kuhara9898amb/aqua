@@ -1,148 +1,148 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>アクア様 本部用チャットシステム モック</title>
-<style>
-:root{--blue:#0b63ce;--blue2:#0647a8;--navy:#06244a;--bg:#f4f7fb;--line:#d9e3f0;--green:#18a058;--orange:#f28c28;--red:#e5484d;--text:#142033;--muted:#667085;--card:#fff;--shadow:0 10px 25px rgba(15,35,80,.08);--radius:18px}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:var(--bg);color:var(--text)}
-a{text-decoration:none;color:inherit} button,input,select,textarea{font:inherit}.app{min-height:100vh}.topbar{height:68px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}.brand{font-size:20px;font-weight:800;letter-spacing:.03em}.role{font-size:13px;background:rgba(255,255,255,.15);padding:7px 12px;border-radius:999px}.container{max-width:1180px;margin:28px auto;padding:0 20px}.screen{display:none}.screen.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--blue);color:#fff}.btn.secondary{background:#eef4ff;color:var(--blue)}.btn.ghost{background:#fff;color:var(--blue);border:1px solid #b7d2f7}.btn.green{background:var(--green)}.btn.orange{background:var(--orange)}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.badge.red{background:#fff1f1;color:var(--red)}.badge.green{background:#e9f8ef;color:var(--green)}.badge.blue{background:#eef5ff;color:var(--blue)}.badge.orange{background:#fff4e8;color:#c46500}.login-wrap{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}.login-hero{background:linear-gradient(135deg,#063b83,#0b63ce);color:#fff;padding:70px;display:flex;flex-direction:column;justify-content:center}.login-hero h1{font-size:42px;line-height:1.25;margin:0 0 20px}.login-hero p{font-size:17px;line-height:1.9;opacity:.9}.login-panel{display:flex;align-items:center;justify-content:center;padding:40px}.login-card{width:430px;padding:34px}.login-card h2{margin:0 0 8px;font-size:26px}.field{margin:18px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:#344054}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:13px 14px;background:#fff}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.summary{padding:20px}.summary .num{font-size:32px;font-weight:900;margin:8px 0}.summary .label{color:var(--muted);font-size:13px}.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.dash-head h1{margin:0;font-size:28px}.layout{display:grid;grid-template-columns:1fr 340px;gap:20px}.room-list{overflow:hidden}.room-item{display:grid;grid-template-columns:52px 1fr 110px;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:center;cursor:pointer;background:#fff}.room-item:hover{background:#f8fbff}.avatar{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:900;background:linear-gradient(135deg,#0b63ce,#6ea8ff)}.room-title{font-weight:800;margin-bottom:5px}.room-msg{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.room-meta{text-align:right;font-size:12px;color:var(--muted)}.panel{padding:20px}.panel h3{margin:0 0 14px}.todo{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:11px 0;font-size:14px}.chat-layout{display:grid;grid-template-columns:310px 1fr;gap:18px;height:calc(100vh - 124px)}.side{overflow:hidden}.side .room-item{grid-template-columns:44px 1fr}.chat-main{display:flex;flex-direction:column;overflow:hidden}.chat-header{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chat-title{font-size:19px;font-weight:900}.messages{flex:1;padding:22px;overflow:auto;background:linear-gradient(#f8fbff,#fff)}.msg{display:flex;gap:10px;margin-bottom:16px}.msg.me{justify-content:flex-end}.bubble{max-width:70%;padding:12px 14px;border-radius:16px;background:#eef4ff;line-height:1.65;font-size:14px}.me .bubble{background:#dff3e8}.name{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px}.attach{margin-top:8px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--blue);font-weight:700}.composer{border-top:1px solid var(--line);padding:14px;display:flex;gap:10px;background:#fff}.composer input{flex:1;border:1px solid #cbd5e1;border-radius:12px;padding:12px}.create-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}.check-list{display:grid;gap:10px}.check{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.phrase{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff}.tabs{display:flex;gap:8px;margin:18px 0}.tab{padding:9px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--muted)}.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}@media(max-width:900px){.login-wrap,.layout,.chat-layout,.create-grid{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.chat-layout{height:auto}.login-hero{padding:36px}.room-item{grid-template-columns:46px 1fr}.room-meta{display:none}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アクア様 管理者画面モック v1</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:rgba(255,255,255,.78); --text:#111827; --muted:#667085;
+      --blue:#007aff; --blue2:#5ac8fa; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
+      --purple:#7c3aed; --border:rgba(15,23,42,.10); --shadow:0 24px 70px rgba(15,23,42,.10);
+      --glass:rgba(255,255,255,.64);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Hiragino Sans","Noto Sans JP",sans-serif;background:radial-gradient(circle at top left,#e9f4ff 0,#f7f8fb 36%,#f4f6f9 100%);color:var(--text)}
+    .app{display:flex;min-height:100vh}
+    .sidebar{width:272px;padding:28px 20px;background:rgba(255,255,255,.62);backdrop-filter:blur(24px);border-right:1px solid var(--border);position:fixed;height:100vh}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:34px}.logo{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,var(--blue),#003d9a);box-shadow:0 12px 28px rgba(0,122,255,.28);display:grid;place-items:center;color:white;font-weight:800}.brand h1{font-size:18px;margin:0}.brand p{font-size:12px;margin:2px 0 0;color:var(--muted)}
+    .nav button{width:100%;border:0;background:transparent;text-align:left;padding:14px 16px;border-radius:16px;margin:4px 0;color:#344054;font-weight:700;cursor:pointer;font-size:14px}.nav button.active,.nav button:hover{background:#fff;box-shadow:0 12px 30px rgba(15,23,42,.08);color:var(--blue)}
+    .side-note{position:absolute;bottom:24px;left:20px;right:20px;background:linear-gradient(145deg,#fff,rgba(255,255,255,.55));border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow)}.side-note b{font-size:13px}.side-note p{font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 0}
+    main{margin-left:272px;width:calc(100% - 272px);padding:34px 40px 60px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.title h2{font-size:34px;letter-spacing:-.03em;margin:0}.title p{color:var(--muted);margin:8px 0 0}.user-area{display:flex;align-items:center;gap:12px}.user{display:flex;align-items:center;gap:12px;background:var(--glass);border:1px solid var(--border);border-radius:999px;padding:8px 14px;backdrop-filter:blur(20px)}.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#111827,#475467);color:white;display:grid;place-items:center;font-weight:800}.logout{border:1px solid var(--border);background:rgba(255,255,255,.76);border-radius:999px;padding:12px 16px;font-weight:850;color:#344054;cursor:pointer;box-shadow:0 10px 24px rgba(15,23,42,.06)}.logout:hover{background:#111827;color:#fff}
+    .section{display:none}.section.active{display:block}.grid{display:grid;gap:18px}.stats{grid-template-columns:repeat(4,1fr)}.card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:22px;box-shadow:var(--shadow);backdrop-filter:blur(24px)}.stat .num{font-size:42px;font-weight:850;letter-spacing:-.04em}.stat .label{color:var(--muted);font-weight:700}.stat.red .num{color:var(--red)}.stat.orange .num{color:var(--orange)}.stat.blue .num{color:var(--blue)}.stat.green .num{color:var(--green)}
+    .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0}.action{border:0;border-radius:24px;padding:20px;text-align:left;color:white;cursor:pointer;box-shadow:0 18px 46px rgba(0,122,255,.20);background:linear-gradient(145deg,#007aff,#0057d8)}.action:nth-child(2){background:linear-gradient(145deg,#111827,#344054)}.action:nth-child(3){background:linear-gradient(145deg,#7c3aed,#4f46e5)}.action b{display:block;font-size:18px;margin-bottom:6px}.action span{opacity:.86;font-size:13px}.list{display:grid;gap:12px}.chat-row{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;padding:16px;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.72);cursor:pointer;transition:.2s}.chat-row:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(15,23,42,.10)}.icon{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;font-size:22px;background:#eef6ff}.chat-row h3{font-size:15px;margin:0 0 5px}.meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}.badge{font-size:12px;font-weight:800;border-radius:999px;padding:7px 10px}.done{background:#eafaf0;color:#128a42}.open{background:#fff1f0;color:#c92a20}.unread{background:#fff7e6;color:#b35a00}.search{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;gap:12px;margin-bottom:18px}.input,select,textarea{border:1px solid var(--border);background:rgba(255,255,255,.72);border-radius:16px;padding:14px 15px;font-size:14px;outline:none;width:100%}textarea{min-height:110px;resize:vertical}.primary{border:0;border-radius:16px;padding:0 22px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.secondary{border:1px solid var(--border);border-radius:16px;padding:13px 18px;background:#fff;color:#344054;font-weight:800;cursor:pointer}.danger{border:0;border-radius:14px;padding:10px 14px;background:#fff1f0;color:#c92a20;font-weight:850;cursor:pointer}.edit{border:0;border-radius:14px;padding:10px 14px;background:#eef6ff;color:#0057d8;font-weight:850;cursor:pointer}
+    .layout-detail{display:grid;grid-template-columns:320px 1fr;gap:18px}.info-card h3{margin:0 0 14px}.info-line{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid var(--border);padding:12px 0;color:#475467}.info-line b{color:#111827;text-align:right}.status-toggle{display:flex;gap:10px;margin-top:18px}.pill{border:1px solid var(--border);background:white;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}.pill.active{background:#eafaf0;color:#128a42;border-color:#b9efcc}.chat-box{height:650px;display:flex;flex-direction:column;overflow:hidden}.messages{flex:1;overflow:auto;padding:20px;background:linear-gradient(180deg,#edf6ff,#f9fbff);border-radius:24px}.msg{max-width:68%;margin:12px 0;display:flex;gap:10px;align-items:flex-end}.msg.me{margin-left:auto;flex-direction:row-reverse}.bubble{padding:14px 16px;border-radius:22px;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.08);line-height:1.6}.me .bubble{background:linear-gradient(145deg,#007aff,#0061db);color:white}.name{font-size:11px;color:#667085;margin-bottom:4px;font-weight:800}.read{font-size:11px;color:#98a2b3;margin-top:4px}.photo-img{width:220px;height:145px;object-fit:cover;border-radius:18px;border:1px solid rgba(0,122,255,.18);display:block}.templates{display:flex;gap:10px;flex-wrap:wrap;padding:14px 0}.template{border:1px solid rgba(0,122,255,.18);background:#f0f7ff;color:#0057d8;border-radius:999px;padding:9px 12px;font-weight:700;font-size:12px;cursor:pointer}.composer{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding-top:12px}.circle{width:44px;height:44px;border:0;border-radius:50%;background:white;box-shadow:0 8px 20px rgba(15,23,42,.08);font-size:20px}.send{height:44px;border:0;border-radius:999px;background:var(--blue);color:#fff;font-weight:900;padding:0 22px}.small{font-size:12px;color:var(--muted)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field label{font-size:13px;font-weight:850;color:#344054;display:block;margin:0 0 8px}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.hint{font-size:12px;color:var(--muted);margin-top:8px}.template-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.72)}.template-row h3{font-size:15px;margin:0 0 4px}.template-row p{font-size:13px;color:#475467;margin:0;line-height:1.6}.row-actions{display:flex;gap:8px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.soft-title{display:flex;align-items:center;gap:10px}.soft-title .mark{width:36px;height:36px;border-radius:13px;background:#eef6ff;display:grid;place-items:center;color:#0057d8;font-weight:900}
+    @media(max-width:1050px){.sidebar{position:relative;width:100%;height:auto}.app{display:block}main{margin-left:0;width:100%;padding:24px}.stats,.quick,.search,.layout-detail,.form-grid{grid-template-columns:1fr}.side-note{position:static;margin-top:20px}.topbar{align-items:flex-start;gap:18px;flex-direction:column}.user-area{width:100%;justify-content:space-between}.chat-box{height:720px}}
+  </style>
 </head>
 <body>
-<div class="app">
-<section id="login" class="screen active">
-  <div class="login-wrap">
-    <div class="login-hero">
-      <h1>アクア<br>チャットコミュニケーションシステム</h1>
-      <p>管理会社・アクア本部・FCオーナー間の連絡を、物件・案件単位で一元管理。伝言ゲーム、対応漏れ、クレーム対応の遅れを防ぎます。</p>
-    </div>
-    <div class="login-panel">
-      <div class="card login-card">
-        <h2>アクア本部ログイン</h2>
-        <p style="color:var(--muted);margin-top:0">本部担当者専用画面</p>
-        <div class="field"><label>ログインID</label><input id="authUser" value="kuha" autocomplete="username"></div>
-        <div class="field"><label>パスワード</label><input id="authPass" type="password" value="9898" autocomplete="current-password" onkeydown="if(event.key==='Enter') loginAuth()"></div>
-        <p id="authError" style="display:none;color:var(--red);font-weight:700;margin:0 0 12px">IDまたはパスワードが違います。</p>
-        <button class="btn" style="width:100%" onclick="loginAuth()">ログイン</button>
-        <p style="color:var(--muted);font-size:12px;line-height:1.7;margin-top:14px">閲覧制限用の簡易認証です。ID：kuha / PW：9898</p>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="logo">AQ</div><div><h1>アクア様 管理者</h1><p>Chat Management Mock</p></div></div>
+      <div class="nav">
+        <button class="active" onclick="show('dashboard',this)">⌘ ダッシュボード</button>
+        <button onclick="show('list',this)">☰ チャット一覧</button>
+        <button onclick="show('detail',this)">✉ チャット詳細</button>
+        <button onclick="show('create',this)">＋ 新規チャット作成</button>
+        <button onclick="show('templates',this)">✎ 定型文管理</button>
       </div>
-    </div>
-  </div>
-</section>
-
-<div id="mainTop" class="topbar" style="display:none"><div class="brand">アクア チャットシステム</div><div style="display:flex;gap:10px;align-items:center"><span class="role">アクア本部</span><button class="btn ghost" onclick="logoutAuth()">ログアウト</button></div></div>
-
-<section id="dashboard" class="screen">
-  <div class="container">
-    <div class="dash-head"><div><h1>ダッシュボード</h1><p style="color:var(--muted);margin:6px 0 0">未完了ルームと最新チャットを確認できます。</p></div><button class="btn" onclick="show('create')">＋ 新規チャット作成</button></div>
-    <div class="grid4">
-      <div class="card summary"><div class="label">未完了ルーム</div><div class="num">18</div><span class="badge red">要対応 6件</span></div>
-      <div class="card summary"><div class="label">本日更新</div><div class="num">24</div><span class="badge blue">昨日比 +8</span></div>
-      <div class="card summary"><div class="label">未読メッセージ</div><div class="num">37</div><span class="badge orange">確認待ち</span></div>
-      <div class="card summary"><div class="label">完了済み</div><div class="num">142</div><span class="badge green">今月累計</span></div>
-    </div>
-    <div class="tabs"><span class="tab active">すべて</span><span class="tab">未完了</span><span class="tab">未読</span><span class="tab">クレーム</span><span class="tab">設備不具合</span></div>
-    <div class="layout">
-      <div class="card room-list">
-        <script>const rooms=['物件A_空調不具合について','物件B_エレベーター点検日程','物件C_共用部清掃について','物件D_照明交換対応','物件E_入居者クレーム共有','物件F_水漏れ一次対応','物件G_駐車場トラブル','物件H_ゴミ置き場改善依頼','物件I_鍵交換依頼','物件J_退去立会い調整'];</script>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">A</div><div><div class="room-title">物件A_空調不具合について <span class="badge red">未完了</span></div><div class="room-msg">管理会社 山田：入居者様より「エアコンが効かない」と連絡がありました。</div></div><div class="room-meta">10:30<br><span class="badge red">3</span></div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">B</div><div><div class="room-title">物件B_エレベーター点検日程</div><div class="room-msg">FCオーナー 佐藤：来週火曜で調整可能です。</div></div><div class="room-meta">09:15</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">C</div><div><div class="room-title">物件C_共用部清掃について <span class="badge orange">確認中</span></div><div class="room-msg">アクア本部 鈴木：写真を確認しました。清掃会社へ連絡します。</div></div><div class="room-meta">昨日<br><span class="badge red">1</span></div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">D</div><div><div class="room-title">物件D_照明交換対応</div><div class="room-msg">管理会社 田中：交換完了しました。写真を添付します。</div></div><div class="room-meta">昨日</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">E</div><div><div class="room-title">物件E_入居者クレーム共有 <span class="badge red">未完了</span></div><div class="room-msg">管理会社 木村：騒音に関するご相談がありました。</div></div><div class="room-meta">2日前</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">F</div><div><div class="room-title">物件F_水漏れ一次対応</div><div class="room-msg">FCオーナー 佐藤：業者手配済みです。</div></div><div class="room-meta">2日前</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">G</div><div><div class="room-title">物件G_駐車場トラブル</div><div class="room-msg">アクア本部：管理会社へ状況確認中です。</div></div><div class="room-meta">3日前</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">H</div><div><div class="room-title">物件H_ゴミ置き場改善依頼</div><div class="room-msg">管理会社：掲示物の案を確認お願いします。</div></div><div class="room-meta">3日前</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">I</div><div><div class="room-title">物件I_鍵交換依頼</div><div class="room-msg">FCオーナー：費用承認しました。</div></div><div class="room-meta">4日前</div></div>
-        <div class="room-item" onclick="show('chat')"><div class="avatar">J</div><div><div class="room-title">物件J_退去立会い調整</div><div class="room-msg">管理会社：候補日を3つ送付します。</div></div><div class="room-meta">5日前</div></div>
-      </div>
-      <div class="card panel"><h3>本部対応メモ</h3><div class="todo"><span>期限超過</span><b style="color:var(--red)">2件</b></div><div class="todo"><span>管理会社から返信待ち</span><b>5件</b></div><div class="todo"><span>FCオーナー確認待ち</span><b>7件</b></div><div class="todo"><span>添付ファイルあり</span><b>12件</b></div><br><button class="btn secondary" style="width:100%">CSV出力</button></div>
-    </div>
-  </div>
-</section>
-
-<section id="chat" class="screen">
-  <div class="container" style="max-width:1280px">
-    <div class="chat-layout">
-      <div class="card side">
-        <div style="padding:16px"><button class="btn secondary" onclick="show('dashboard')">← ダッシュボードへ</button></div>
-        <div class="room-item"><div class="avatar">A</div><div><div class="room-title">物件A_空調不具合</div><div class="room-msg">未完了・未読3件</div></div></div>
-        <div class="room-item"><div class="avatar">B</div><div><div class="room-title">物件B_点検日程</div><div class="room-msg">確認中</div></div></div>
-      </div>
-      <div class="card chat-main">
-        <div class="chat-header"><div><div class="chat-title">物件A_空調不具合について</div><div style="color:var(--muted);font-size:13px">参加者：管理会社 山田／アクア本部 鈴木／FCオーナー 佐藤</div></div><span class="badge red">未完了</span></div>
-        <div class="messages">
-          <div class="msg"><div class="avatar">管</div><div><div class="name">管理会社 山田 10:20</div><div class="bubble">入居者様より「エアコンが効かない」と連絡がありました。室外機の写真を添付します。<div class="attach">📎 室外機写真.jpg</div></div></div></div>
-          <div class="msg me"><div><div class="name">アクア本部 鈴木 10:21</div><div class="bubble">確認します。室外機周辺の写真も追加でお願いします。</div></div></div>
-          <div class="msg"><div class="avatar">FC</div><div><div class="name">FCオーナー 佐藤 10:23</div><div class="bubble">メーカー修理になる場合は、見積確認後に進めてください。</div></div></div>
-          <div class="msg me"><div><div class="name">アクア本部 鈴木 10:25</div><div class="bubble">メーカーに連絡しました。訪問可能日を確認します。</div></div></div>
+      <div class="side-note"><b>本部・FC・ビル管理会社をつなぐ</b><p>グループチャットで対応履歴を一元管理。完了／未完了、画像添付、定型文返信も管理できます。</p></div>
+    </aside>
+    <main>
+      <div class="topbar">
+        <div class="title"><h2 id="pageTitle">ダッシュボード</h2><p id="pageLead">本日の対応状況をすばやく確認できます。</p></div>
+        <div class="user-area">
+          <div class="user"><div class="avatar">松原</div><div><b>本部管理者</b></div></div>
+          <button class="logout" onclick="alert('ログアウトしました（モック）')">ログアウト</button>
         </div>
-        <div class="composer"><button class="btn secondary">定型文</button><button class="btn secondary">添付</button><input placeholder="メッセージを入力"><button class="btn">送信</button></div>
       </div>
-    </div>
+
+      <section id="dashboard" class="section active">
+        <div class="grid stats">
+          <div class="card stat red"><div class="label">未完了のチャット</div><div class="num">12</div><div class="small">対応が必要なスレッド</div></div>
+          <div class="card stat orange"><div class="label">本部からの未返信</div><div class="num">4</div><div class="small">返信待ちのチャット</div></div>
+          <div class="card stat blue"><div class="label">本日の新規</div><div class="num">7</div><div class="small">新しく作成されたチャット</div></div>
+          <div class="card stat green"><div class="label">完了済み</div><div class="num">38</div><div class="small">今月クローズ済み</div></div>
+        </div>
+        <div class="quick">
+          <button class="action" onclick="showById('create')"><b>＋ 新規チャット作成</b><span>FC・ビル管理会社を選択して開始</span></button>
+          <button class="action" onclick="showById('list')"><b>チャット一覧へ</b><span>検索・絞り込み・ステイタス確認</span></button>
+          <button class="action" onclick="showById('templates')"><b>定型文管理</b><span>よく使う返信文を登録・編集</span></button>
+        </div>
+        <div class="card"><h3>最新のチャット一覧</h3><div class="list" id="latest"></div></div>
+      </section>
+
+      <section id="list" class="section">
+        <div class="card">
+          <div class="search"><input class="input" placeholder="ワード検索：水漏れ、清掃、設備など"><input class="input" placeholder="ビル名"><input class="input" placeholder="FC名"><select><option>ステイタス：すべて</option><option>未完了</option><option>完了</option></select><button class="primary">検索</button></div>
+          <div class="list" id="allchats"></div>
+        </div>
+      </section>
+
+      <section id="detail" class="section">
+        <div class="layout-detail">
+          <div class="card info-card">
+            <h3>チャット情報</h3>
+            <div class="info-line"><span>件名</span><b>2階共用部の水漏れについて</b></div>
+            <div class="info-line"><span>ビル名</span><b>梅田アクアビル</b></div>
+            <div class="info-line"><span>FCオーナー</span><b>山田 太郎</b></div>
+            <div class="info-line"><span>ビル管理会社</span><b>大阪ビル管理</b></div>
+            <div class="info-line"><span>ステイタス</span><b style="color:#c92a20">未完了</b></div>
+            <div class="status-toggle"><button class="pill">未完了</button><button class="pill active">完了に変更</button></div>
+            <p class="small" style="line-height:1.8;margin-top:18px">管理者はチャット完了後、ステイタスを変更できます。対応履歴はそのまま保存されます。</p>
+          </div>
+          <div class="card chat-box"><div class="messages">
+            <div class="msg"><div><div class="name">FCオーナー 山田</div><div class="bubble">梅田アクアビルの2階共用部で水漏れのような跡があります。確認をお願いします。</div><div class="read">既読 10:12</div></div></div>
+            <div class="msg"><div><div class="name">FCオーナー 山田</div><div class="bubble"><img src="img_water.jpg" alt="水漏れの添付画像" class="photo-img" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<div style=&quot;width:220px;height:145px;border-radius:18px;background:#eaf4ff;display:grid;place-items:center;color:#007aff;font-weight:800;&quot;>img_water.jpg</div>')"></div><div class="read">既読 10:13</div></div></div>
+            <div class="msg me"><div><div class="name">本部管理者 松原</div><div class="bubble">ご連絡ありがとうございます。ビル管理会社様にも共有し、確認を進めます。</div><div class="read">既読 10:18</div></div></div>
+            <div class="msg"><div><div class="name">大阪ビル管理 佐藤</div><div class="bubble">承知しました。本日15時頃に現地確認いたします。</div><div class="read">未読あり 10:24</div></div></div>
+            <div class="msg me"><div><div class="name">本部管理者 松原</div><div class="bubble">ありがとうございます。確認後、状況と対応方針をご共有ください。</div><div class="read">既読 10:26</div></div></div>
+          </div>
+          <div class="templates"><button class="template" onclick="setMsg(this)">承知しました。</button><button class="template" onclick="setMsg(this)">後ほど確認しご連絡します。</button><button class="template" onclick="setMsg(this)">関係者へ共有します。</button><button class="template" onclick="setMsg(this)">ご対応ありがとうございます。</button></div>
+          <div class="composer"><button class="circle">📎</button><input id="messageInput" class="input" placeholder="メッセージを入力、または定型文を選択"><button class="send">送信</button></div></div>
+        </div>
+      </section>
+
+      <section id="create" class="section">
+        <div class="card">
+          <div class="soft-title"><div class="mark">＋</div><div><h3 style="margin:0">新規チャット作成</h3><p class="small" style="margin:4px 0 0">ビル・FCオーナー・ビル管理会社を選択し、件名を入力してチャットを開始します。</p></div></div>
+          <div class="form-grid" style="margin-top:22px">
+            <div class="field"><label>ビル名</label><input class="input" list="buildingList" placeholder="例：梅田アクアビル"></div>
+            <div class="field"><label>FCオーナー</label><input class="input" list="fcList" placeholder="例：山田 太郎"></div>
+            <div class="field"><label>ビル管理会社</label><input class="input" list="managementList" placeholder="例：大阪ビル管理"></div>
+            <div class="field"><label>件名</label><input class="input" placeholder="例：2階共用部の水漏れについて"></div>
+          </div>
+          <datalist id="buildingList">
+            <option value="梅田アクアビル"><option value="なんば中央ビル"><option value="心斎橋East"><option value="天王寺アクア"><option value="京都河原町ビル"><option value="神戸三宮ビル">
+          </datalist>
+          <datalist id="fcList">
+            <option value="山田 太郎"><option value="田中 一郎"><option value="佐々木 美咲"><option value="木村 健"><option value="中村 亮">
+          </datalist>
+          <datalist id="managementList">
+            <option value="大阪ビル管理"><option value="関西ファシリティーズ"><option value="アクア設備管理"><option value="中央メンテナンス"><option value="神戸ビルサービス">
+          </datalist>
+          <div class="form-actions"><button class="secondary" onclick="showById('dashboard')">キャンセル</button><button class="primary" style="height:46px">チャットを作成</button></div>
+        </div>
+      </section>
+
+      <section id="templates" class="section">
+        <div class="card">
+          <div class="toolbar">
+            <div class="soft-title"><div class="mark">✎</div><div><h3 style="margin:0">定型文管理</h3><p class="small" style="margin:4px 0 0">よく使う返信文を登録して、チャット詳細から1タップで呼び出せます。</p></div></div>
+            <button class="primary" style="height:46px" onclick="alert('新規作成画面を開きます（モック）')">＋ 新規作成</button>
+          </div>
+          <div class="field" style="margin-bottom:18px"><label>新規作成</label><textarea placeholder="例：承知しました。後ほど確認しご連絡します。"></textarea><div class="form-actions"><button class="primary" style="height:44px">登録する</button></div></div>
+          <div class="list">
+            <div class="template-row"><div><h3>承知しました。</h3><p>短い了承返信として利用</p></div><div class="row-actions"><button class="edit">編集</button><button class="danger">削除</button></div></div>
+            <div class="template-row"><div><h3>後ほど確認しご連絡します。</h3><p>確認が必要な問い合わせへの一次返信</p></div><div class="row-actions"><button class="edit">編集</button><button class="danger">削除</button></div></div>
+            <div class="template-row"><div><h3>関係者へ共有します。</h3><p>本部・FC・ビル管理会社への共有時に利用</p></div><div class="row-actions"><button class="edit">編集</button><button class="danger">削除</button></div></div>
+            <div class="template-row"><div><h3>ご対応ありがとうございます。</h3><p>対応完了時のお礼返信</p></div><div class="row-actions"><button class="edit">編集</button><button class="danger">削除</button></div></div>
+            <div class="template-row"><div><h3>現地確認後、対応方針をご共有ください。</h3><p>ビル管理会社への確認依頼</p></div><div class="row-actions"><button class="edit">編集</button><button class="danger">削除</button></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
-</section>
-
-<section id="create" class="screen">
-  <div class="container">
-    <div class="dash-head"><div><h1>新規チャット作成</h1><p style="color:var(--muted);margin:6px 0 0">案件・物件単位でチャットルームを作成します。</p></div><button class="btn secondary" onclick="show('dashboard')">戻る</button></div>
-    <div class="create-grid">
-      <div class="card panel">
-        <div class="field"><label>件名</label><input placeholder="例：物件A_空調不具合について"></div>
-        <div class="field"><label>物件・案件</label><select><option>物件A</option><option>物件B</option><option>物件C</option></select></div>
-        <div class="field"><label>カテゴリ</label><select><option>設備不具合</option><option>クレーム</option><option>点検・清掃</option><option>その他</option></select></div>
-        <div class="field"><label>初回メッセージ</label><textarea rows="7" placeholder="共有内容を入力してください"></textarea></div>
-        <div class="field"><label>添付ファイル</label><input type="file"></div>
-        <button class="btn" onclick="show('chat')">チャットルームを作成</button>
-      </div>
-      <div class="card panel"><h3>参加者を選択</h3><div class="check-list"><label class="check"><input type="checkbox" checked> 管理会社 山田</label><label class="check"><input type="checkbox" checked> アクア本部 鈴木</label><label class="check"><input type="checkbox" checked> FCオーナー 佐藤</label></div><br><h3>いつも使うフレーズ</h3><div class="phrase"><span>確認します。少々お待ちください。</span><button class="btn secondary">挿入</button></div><div class="phrase"><span>写真の添付をお願いします。</span><button class="btn secondary">挿入</button></div><div class="phrase"><span>メーカーに確認します。</span><button class="btn secondary">挿入</button></div></div>
-    </div>
-  </div>
-</section>
-</div>
-<script>
-const AUTH_USER = 'kuha';
-const AUTH_PASS = '9898';
-
-function isAuthed(){
-  return sessionStorage.getItem('aquaMockAuthed') === '1';
-}
-
-function loginAuth(){
-  const user = document.getElementById('authUser').value.trim();
-  const pass = document.getElementById('authPass').value;
-  const error = document.getElementById('authError');
-
-  if(user === AUTH_USER && pass === AUTH_PASS){
-    sessionStorage.setItem('aquaMockAuthed','1');
-    error.style.display = 'none';
-    show('dashboard');
-  }else{
-    sessionStorage.removeItem('aquaMockAuthed');
-    error.style.display = 'block';
-  }
-}
-
-function logoutAuth(){
-  sessionStorage.removeItem('aquaMockAuthed');
-  show('login');
-}
-
-function show(id){
-  if(id !== 'login' && !isAuthed()){
-    id = 'login';
-  }
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById('mainTop').style.display = id === 'login' ? 'none' : 'flex';
-  window.scrollTo(0,0);
-}
-
-window.addEventListener('DOMContentLoaded',()=>{
-  if(isAuthed()) show('dashboard');
-});
-</script>
+  <script>
+    const chats=[['未完了','梅田アクアビル','FC山田','2階共用部の水漏れについて','本部未返信'],['完了','なんば中央ビル','FC田中','空調フィルター交換完了報告',''],['未完了','心斎橋East','FC佐々木','入口照明の不具合について','未読あり'],['未完了','天王寺アクア','FC木村','清掃スケジュール変更相談','本部未返信'],['完了','京都河原町ビル','FC中村','看板点灯時間の変更完了',''],['未完了','神戸三宮ビル','FC藤井','エレベーター点検日の確認','未読あり'],['完了','西梅田タワー','FC小林','トイレ備品補充の完了報告',''],['未完了','堺東ビル','FC岡田','ゴミ置き場の利用ルール確認','本部未返信'],['完了','京橋Office','FC村上','鍵交換の完了連絡',''],['未完了','本町アクアプレイス','FC森','夜間工事の騒音について','']];
+    function row(c){let st=c[0]=='完了';return `<div class="chat-row" onclick="showById('detail')"><div class="icon">${st?'✅':'⚠️'}</div><div><h3>${c[3]}</h3><div class="meta"><span>🏢 ${c[1]}</span><span>👤 ${c[2]}</span><span>🕒 10:${Math.floor(Math.random()*50+10)}</span></div></div><div><span class="badge ${st?'done':'open'}">${c[0]}</span>${c[4]?` <span class="badge unread">${c[4]}</span>`:''}</div></div>`}
+    latest.innerHTML=chats.map(row).join(''); allchats.innerHTML=chats.concat(chats.slice(0,4)).map(row).join('');
+    const titleMap={dashboard:'ダッシュボード',list:'チャット一覧画面',detail:'チャット詳細画面',create:'新規チャット作成',templates:'定型文管理画面'};
+    const leadMap={dashboard:'本日の対応状況をすばやく確認できます。',list:'チャットを検索し、対応状況を確認できます。',detail:'関係者とのやり取り、画像添付、完了ステイタスを管理できます。',create:'関係者を選択して新しいグループチャットを作成します。',templates:'よく使う返信文を登録・編集・削除できます。'};
+    function show(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); if(btn)btn.classList.add('active'); pageTitle.textContent=titleMap[id]||'管理画面'; pageLead.textContent=leadMap[id]||''; window.scrollTo({top:0,behavior:'smooth'});}
+    function showById(id){const key={dashboard:'ダッシュ',list:'一覧',detail:'詳細',create:'新規',templates:'定型'}[id];const btn=[...document.querySelectorAll('.nav button')].find(b=>b.textContent.includes(key));show(id,btn)}
+    function setMsg(btn){document.getElementById('messageInput').value=btn.textContent;}
+  </script>
 </body>
 </html>
